@@ -70,12 +70,14 @@ export function Navbar() {
           </ul>
         </div>
         <div className="hidden lg:block">
+        <Link to="/account">
           <button
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            <Link to="/account">Login/Signup</Link>
+            Login/Signup
           </button>
+          </Link>
         </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
