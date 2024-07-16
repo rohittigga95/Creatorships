@@ -6,6 +6,7 @@ import { ForBusinessPage } from '../Pages/ForBusinessPage';
 import { LoginSignupPage } from '../Pages/LoginSignupPage';
 import { Contact } from '../Pages/Contact';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -15,22 +16,22 @@ const router = createBrowserRouter([
   {
     path: '/creator',
     element: <App />,
-    children: [{ path: '#/creator', element: <ForCreatorPage /> }],
+    children: [{ path: '/creator', element: <ForCreatorPage /> }],
   },
   {
     path: '/business',
     element: <App />,
-    children: [{ path: '#/business', element: <ForBusinessPage /> }],
+    children: [{ path: '/business', element: <ForBusinessPage /> }],
   },
   {
     path: '/account',
     element: <App />,
-    children: [{ path: '#/account', element: <LoginSignupPage /> }],
+    children: [{ path: '/account', element: <LoginSignupPage /> }],
   },
   {
     path: '/contact',
     element: <App />,
-    children: [{ path: '#/contact', element: <Contact /> }],
+    children: [{ path: '/contact', element: <Contact /> }],
   },
 ]);
 

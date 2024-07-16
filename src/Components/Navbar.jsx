@@ -4,29 +4,12 @@ import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 
-const menuItems = [
-  {
-    name: 'Home',
-    href: '/',
-  },
-  {
-    name: 'For Creators',
-    href: '/creator',
-  },
-  {
-    name: 'For Businesses',
-    href: '/business',
-  },
-  {
-    name: 'Contact',
-    href: '/contact',
-  },
-
-  // { path: '/', title: 'Start a search' },
-  // { path: '/creator', name: 'For Creators' },
-  // { path: '/business', name: 'For Businesses' },
-  // { path: '/Contact', name: 'Contact' },
-];
+const navItems = [
+  {path:"/", title: "Start a search"},
+  {path:"/creator", title: "For Creators"},
+  {path:"/business", title: "For Businesses"},
+  {path:"/contact", title: "Contact"},
+]
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -57,14 +40,14 @@ export function Navbar() {
         </div>
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
-            {menuItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  to={item.href}
+            {navItems.map(({path, title}) => (
+              <li key={path}>
+                <NavLink
+                  to={path}
                   className="text-sm font-semibold text-gray-800 hover:text-gray-900"
                 >
-                  {item.name}
-                </Link>
+                  {title}
+                </NavLink>
               </li>
             ))}
           </ul>
