@@ -16,7 +16,7 @@ export function ForBusinessPage() {
         </div>
         <div className="lg:grid lg:grid-cols-12 px-5 lg:gap-x-6">
           <div className="px-4 py-6 lg:col-span-5 lg:px-0">
-            <span className="mb-2 inline-block rounded-full border px-3 text-xs font-semibold">
+            <span className="mb-2 inline-block rounded-full border text-xs font-semibold tracking-widest text-black bg-gray-100 px-4 py-1.5 uppercase">
               You would get deliverables against equity
             </span>
             <h1 className="text-3xl font-bold md:text-4xl">
