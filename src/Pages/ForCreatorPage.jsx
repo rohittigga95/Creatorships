@@ -2,41 +2,60 @@ import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { DollarSign, Zap, Moon, Filter } from 'lucide-react';
 import axios from 'axios'
-import Alert from '../Components/Alert';
-import { Route } from 'react-router-dom';
+// import Alert from '../Components/Alert';
+// import { Route } from 'react-router-dom';
 
 
 
 
 export function ForCreatorPage() {
+    // const [creators, setCreators] = useState({
+    // name: '',
+    // email: '',
+    // link: ''
+    // });  
+    // const handleChange = (e) => {  
+    // const { name, value } = e.target;   
+    // setCreators({...creators, [name]: value });  
+    // };   
+    // const handleSubmit = async (e) => {  
+    // e.preventDefault();
+    // try {   
+    // const response = await axios.post("http://localhost:5000/api/creators", creators);   
+    // console.log('Form data submitted successfully:', response.data);
+    // setCreators   
+    // } catch (error) {   
+    // console.error('Error submitting form data:',error);
+    // }   
+    // };
+
+
   const [creators, setCreators] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [link, setLink] = useState("");
-  const [isActive, setActive] = useState("false");
-  // const ToggleClass = () => {
-  //   setActive(!isActive); 
-  //  };
+  const [isActive, setActive] = useState("true");
 
   const handleAddCreator = () => {
     //add a new note to the server
-    const alert = true;
+    
+    
     axios
         .post("http://localhost:5000/api/creators", {name, email, link})
         .then((response) => {
           setCreators([...creators, response.data])
-          
           setActive(!isActive)
           
         })
         .catch((error) => console.error("Error adding note:", error))
+
   }
 
   return (
     <div className="mx-auto max-w-7xl">
-      <div className={ isActive ? "hidden" : "" }>
+      {/* <div className={ isActive ? 'hidden' : '' }>
         <Alert />
-      </div>
+      </div> */}
       
       <div className="mx-auto max-w-7xl lg:px-8">
         <div className="flex flex-col justify-center px-4 py-10 lg:px-6">    
@@ -80,9 +99,11 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         placeholder="Name"
+                        
+                        
                         required
                         onChange={(e) => setName(e.target.value)}
-                        
+                        // onChange={handleChange}
                       ></input>
                     </div>
                   </div>
@@ -99,9 +120,11 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Email"
+                        
+                        
                         required
                         onChange={(e) => setEmail(e.target.value)}
-                        
+                        // onChange={handleChange}
                       ></input>
                     </div>
                   </div>
@@ -120,6 +143,8 @@ export function ForCreatorPage() {
                         placeholder="insta profile"
                         required
                         onChange={(e) => setLink(e.target.value)}
+                        // onChange={handleChange}
+                        
                         
                       ></input>
                     </div>
