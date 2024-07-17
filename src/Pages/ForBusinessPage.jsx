@@ -46,7 +46,7 @@ export function ForBusinessPage() {
               your niche.
             </p>
             <div>
-              <form action="#" method="POST" className="mt-8">
+              <form onSubmit={handleAddBusiness} className="mt-8">
                 <div className="space-y-5">
                   <div>
                     <label
@@ -60,7 +60,9 @@ export function ForBusinessPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         placeholder="Name"
+                        required
                         onChange={(e) => setName(e.target.value)}
+                        
                       ></input>
                     </div>
                   </div>
@@ -77,7 +79,9 @@ export function ForBusinessPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Email"
+                        required
                         onChange={(e) => setEmail(e.target.value)}
+                        
                       ></input>
                     </div>
                   </div>
@@ -92,17 +96,19 @@ export function ForBusinessPage() {
                     <div className="mt-2">
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                        type="email"
+                        type="text"
                         placeholder="Website"
+                        required
                         onChange={(e) => setLink(e.target.value)}
+                        
                       ></input>
                     </div>
                   </div>
                   <div>
                     <button
-                      type="button"
+                      type="submit"
                       className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-                    onClick={handleAddBusiness}
+                    
                     >
                       Get started <ArrowRight className="ml-2" size={16} />
                     </button>
