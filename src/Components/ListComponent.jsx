@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom'
 const ListComponent = () => {
     
 const [creators, setCreators] = useState([]);
+const [businesses, setBusinesses] = useState([]);
 useEffect(() => {
   //fetch notes from the server
   axios
@@ -32,18 +33,24 @@ useEffect(() => {
       .then((response) => setCreators(response.data))
       .catch((error) => console.error("Error fetching notes:", error))
 }, [])
+useEffect(() => {
+  //fetch notes from the server
+  axios
+      .get("http://localhost:5000/api/businesses")
+      .then((response) => setBusinesses(response.data))
+      .catch((error) => console.error("Error fetching notes:", error))
+}, [])
   return (
     <>
       <section className="w-full max-w-7xl py-4 mx-5">
         <div className="flex flex-col space-y-4  md:flex-row md:items-center md:justify-between md:space-y-0">
-          <div>
+          <div className='grid '>
             <h2 className="text-lg font-semibold">Customers</h2>
             <p className="mt-1 text-sm text-gray-700">
-              This is a list of all creators and businesses. You can add new employees, edit or delete existing
-              ones.
+              This is a list of all creators and businesses who have filled the form.
             </p>
           </div>
-          <div>
+          {/* <div>
             <button
               type="button"
               className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -51,7 +58,7 @@ useEffect(() => {
               Add new customer
             </button>
 
-          </div>
+          </div> */}
         </div>
         <div className="mt-6 flex flex-col">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -64,15 +71,8 @@ useEffect(() => {
                         scope="col"
                         className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
                       >
-                        <span>Customer</span>
+                        <span>Creators</span>
                       </th>
-                      <th
-                        scope="col"
-                        className="px-12 py-3.5 text-left text-sm font-normal text-gray-700"
-                      >
-                        Creator/Business
-                      </th>
-
 
                       <th
                         scope="col"
@@ -88,7 +88,7 @@ useEffect(() => {
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {creators.map((creator) => (
                       <tr key={creator.name}>
-                        <td className="whitespace-nowrap px-4 py-4">
+                        <td className="whitespace-nowrap px-3 py-4">
                           <div className="flex items-center">
                             {/* <div className="h-10 w-10 flex-shrink-0">
                               <img
@@ -103,18 +103,16 @@ useEffect(() => {
                             </div>
                           </div>
                         </td>
-                        <td className="whitespace-nowrap px-12 py-4">
-                          <div className="text-sm text-gray-900 ">{creator.name}</div>
-                        </td>
+                        
                         <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
                           
                        <a href={creator.link} target='_blank'> {creator.link}</a>
                         </td>
-                        <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
+                        {/* <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
                           <a href="#" className="text-gray-700">
                             Edit
                           </a>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -123,7 +121,68 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center pt-6">
+        <div className="mt-6 flex flex-col">
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden border border-gray-200 md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                      >
+                        <span>Businesses</span>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                      >
+                        Link
+                      </th>
+                      <th scope="col" className="relative px-4 py-3.5">
+                        <span className="sr-only">Edit</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 bg-white">
+                    {businesses.map((business) => (
+                      <tr key={business.name}>
+                        <td className="whitespace-nowrap px-4 py-4">
+                          <div className="flex items-center">
+                            {/* <div className="h-10 w-10 flex-shrink-0">
+                              <img
+                                className="h-10 w-10 rounded-full object-cover"
+                                src={person.image}
+                                alt=""
+                              />
+                            </div> */}
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">{business.name}</div>
+                              <div className="text-sm text-gray-700">{business.email}</div>
+                            </div>
+                          </div>
+                        </td>
+                        
+                        <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                          
+                       <a href={business.link} target='_blank'> {business.link}</a>
+                        </td>
+                        {/* <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
+                          <a href="#" className="text-gray-700">
+                            Edit
+                          </a>
+                        </td> */}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="flex items-center justify-center pt-6">
           <a href="#" className="mx-1 cursor-not-allowed text-sm font-semibold text-gray-900">
             <span className="hidden lg:block">&larr; Previous</span>
             <span className="block lg:hidden">&larr;</span>
@@ -156,7 +215,7 @@ useEffect(() => {
             <span className="hidden lg:block">Next &rarr;</span>
             <span className="block lg:hidden">&rarr;</span>
           </a>
-        </div>
+        </div> */}
       </section>
     </>
   )
