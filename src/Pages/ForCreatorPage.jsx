@@ -41,7 +41,7 @@ export function ForCreatorPage() {
     
     
     axios
-        .post("http://localhost:5000/api/creators", {name, email, link})
+        .post("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:5000/api/creators", {name, email, link})
         .then((response) => {
           setCreators([...creators, response.data])
           setActive(!isActive)

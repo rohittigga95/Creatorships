@@ -11,7 +11,7 @@ export function ForBusinessPage() {
   const handleAddBusiness = () => {
     //add a new note to the server
     axios
-        .post("http://localhost:5000/api/businesses", {name, email, link})
+        .post("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:5000/api/businesses", {name, email, link})
         .then((response) => {
           
           setName("")
