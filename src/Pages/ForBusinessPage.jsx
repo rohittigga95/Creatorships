@@ -1,7 +1,25 @@
 import React from 'react';
+import { useState } from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import axios from 'axios'
 
 export function ForBusinessPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [link, setLink] = useState("");
+
+  const handleAddBusiness = () => {
+    //add a new note to the server
+    axios
+        .post("http://localhost:5000/api/businesses", {name, email, link})
+        .then((response) => {
+          
+          setName("")
+          setEmail("")
+          setLink("")
+        })
+        .catch((error) => console.error("Error adding note:", error))
+  }
   return (
     <div className="mx-auto max-w-7xl">
       <div className="mx-auto max-w-7xl lg:px-8">
@@ -40,8 +58,9 @@ export function ForBusinessPage() {
                     <div className="mt-2">
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                        type="email"
+                        type="text"
                         placeholder="Name"
+                        onChange={(e) => setName(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -58,6 +77,7 @@ export function ForBusinessPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -74,6 +94,7 @@ export function ForBusinessPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Website"
+                        onChange={(e) => setLink(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -81,6 +102,7 @@ export function ForBusinessPage() {
                     <button
                       type="button"
                       className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    onClick={handleAddBusiness}
                     >
                       Get started <ArrowRight className="ml-2" size={16} />
                     </button>

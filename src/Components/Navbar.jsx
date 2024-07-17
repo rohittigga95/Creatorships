@@ -5,11 +5,11 @@ import { Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 
 const navItems = [
-  {path:"/", title: "Start a search"},
-  {path:"/creator", title: "For Creators"},
-  {path:"/business", title: "For Businesses"},
-  {path:"/contact", title: "Contact"},
-]
+  { path: '/', title: 'Home' },
+  { path: '/creator', title: 'For Creators' },
+  { path: '/business', title: 'For Businesses' },
+  { path: '/contact', title: 'Contact' },
+];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,7 +40,7 @@ export function Navbar() {
         </div>
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
-            {navItems.map(({path, title}) => (
+            {navItems.map(({ path, title }) => (
               <li key={path}>
                 <NavLink
                   to={path}
@@ -53,13 +53,13 @@ export function Navbar() {
           </ul>
         </div>
         <div className="hidden lg:block">
-        <Link to="/account">
-          <button
-            type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Login/Signup
-          </button>
+          <Link to="/account">
+            <button
+              type="button"
+              className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              Login/Signup
+            </button>
           </Link>
         </div>
         <div className="lg:hidden">
@@ -100,16 +100,15 @@ export function Navbar() {
                 </div>
                 <div className="mt-6">
                   <nav className="grid gap-y-4">
-                    {menuItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
-                      >
-                        <span className="ml-3 text-base font-medium text-gray-900">
-                          {item.name}
-                        </span>
-                      </Link>
+                    {navItems.map(({ path, title }) => (
+                      <li key={path}>
+                        <NavLink
+                          to={path}
+                          className="text-sm font-semibold text-gray-800 hover:text-gray-900"
+                        >
+                          {title}
+                        </NavLink>
+                      </li>
                     ))}
                   </nav>
                 </div>

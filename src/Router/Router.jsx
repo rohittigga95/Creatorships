@@ -5,6 +5,7 @@ import { ForCreatorPage } from '../Pages/ForCreatorPage';
 import { ForBusinessPage } from '../Pages/ForBusinessPage';
 import { LoginSignupPage } from '../Pages/LoginSignupPage';
 import { Contact } from '../Pages/Contact';
+import { Admin } from '../Pages/Admin';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
     path: '/contact',
     element: <App />,
     children: [{ path: '/contact', element: <Contact /> }],
+  },
+  {
+    path: '/admin',
+    element: <App />,
+    children: [{ path: '/admin', element: <Admin /> }],
   },
 ]);
 

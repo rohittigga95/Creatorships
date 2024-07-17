@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { DollarSign, Zap, Moon, Filter } from 'lucide-react';
+import axios from 'axios'
+
 
 export function ForCreatorPage() {
+  // const [creator, setCreator] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [link, setLink] = useState("");
+
+  const handleAddCreator = () => {
+    //add a new note to the server
+    axios
+        .post("http://localhost:5000/api/creators", {name, email, link})
+        .then((response) => {
+          
+          setName("")
+          setEmail("")
+          setLink("")
+        })
+        .catch((error) => console.error("Error adding note:", error))
+  }
+
   return (
     <div className="mx-auto max-w-7xl">
       <div className="mx-auto max-w-7xl lg:px-8">
@@ -47,6 +67,7 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         placeholder="Name"
+                        onChange={(e) => setName(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -63,6 +84,7 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="link"
                         placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -79,13 +101,16 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
                         placeholder="insta profile"
+                        onChange={(e) => setLink(e.target.value)}
                       ></input>
                     </div>
                   </div>
                   <div>
                     <button
-                      type="button"
+                    type='button'
                       className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                      onClick={handleAddCreator}
+                    
                     >
                       Get started <ArrowRight className="ml-2" size={16} />
                     </button>
