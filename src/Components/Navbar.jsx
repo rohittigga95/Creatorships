@@ -9,6 +9,7 @@ const navItems = [
   { path: '/creator', title: 'For Creators' },
   { path: '/business', title: 'For Businesses' },
   { path: '/contact', title: 'Contact' },
+  { path: '/admin', title: 'Admin' },
 ];
 
 export function Navbar() {

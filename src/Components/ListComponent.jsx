@@ -36,7 +36,7 @@ useEffect(() => {
 useEffect(() => {
   //fetch notes from the server
   axios
-      .get("http://localhost:5000/api/businesses")
+      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:5000/api/businesses")
       .then((response) => setBusinesses(response.data))
       .catch((error) => console.error("Error fetching notes:", error))
 }, [])
