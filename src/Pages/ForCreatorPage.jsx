@@ -74,7 +74,7 @@ export function ForCreatorPage() {
                 </p>
               </div>
               <h2 className="mt-4 text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-4xl">
-                Creators, want to build businesses which you dreamt of ? Become
+                Creators, want to build a business? Become
                 a partner in our listed companies.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">

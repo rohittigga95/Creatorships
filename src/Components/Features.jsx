@@ -22,11 +22,10 @@ export function Features() {
             </svg>
           </div>
           <h3 className="mt-8 text-lg font-semibold text-black">
-            Secured Payments
+            Trusted Creators and Brands
           </h3>
           <p className="mt-4 text-sm text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
+            We onboard only verified and trusted brands and creators.
           </p>
         </div>
         <div>
@@ -47,11 +46,10 @@ export function Features() {
             </svg>
           </div>
           <h3 className="mt-8 text-lg font-semibold text-black">
-            Fast & Easy to Load
+            Great Deals
           </h3>
           <p className="mt-4 text-sm text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
+            Great place to connect with founders and creators.
           </p>
         </div>
         <div>
@@ -72,11 +70,10 @@ export function Features() {
             </svg>
           </div>
           <h3 className="mt-8 text-lg font-semibold text-black">
-            Light & Dark Version
+            Support Platform
           </h3>
           <p className="mt-4 text-sm text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
+            A platform which stramline many things such as deliverables and assets sharing.
           </p>
         </div>
         <div>
@@ -97,11 +94,10 @@ export function Features() {
             </svg>
           </div>
           <h3 className="mt-8 text-lg font-semibold text-black">
-            Filter Blocks
+            Legal
           </h3>
           <p className="mt-4 text-sm text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
+            We can handle all the legalities if you need so.
           </p>
         </div>
       </div>

@@ -9,8 +9,7 @@ export function NewsLetter() {
             Subscribe to our newsletter
           </h2>
           <p className="mt-2 text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-            ipsum eu nunc commodo posuere et sit amet ligula.
+            Regular updates regarding the industry, with indept insights.
           </p>
         </div>
         <div className="mt-10 w-full md:w-1/2 lg:mt-0">

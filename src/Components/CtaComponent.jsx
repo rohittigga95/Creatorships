@@ -29,12 +29,12 @@ export function CtaComponent() {
           </div>
 
           <h2 className="mt-8 text-3xl font-bold leading-tight text-black sm:text-4xl lg:mt-12 lg:text-5xl">
-            Join <span className="border-b-8 border-yellow-300">5,482</span>{' '}
-            other developers
+            Join with <span className="border-b-8 border-yellow-300">creator</span>{' '}
+            , <span className="border-b-8 border-blue-300">startup</span>{' '}
+            , <span className="border-b-8 border-green-300">brands</span>{' '}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base text-gray-600 md:mt-10 lg:text-xl">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis.
+            we welcome creators, startups, businesses, brands to work together.
           </p>
 
           <button

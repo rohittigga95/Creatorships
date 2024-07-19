@@ -10,7 +10,7 @@ export default function Hero() {
               <p className="text-sm font-medium">Equity &#128200;</p>
             </div>
             <p className="text-sm font-medium">
-              Partnership between creators and businesses &#x1F91D;;
+              Partnership between creators and businesses &#x1F91D;
             </p>
           </div>
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
