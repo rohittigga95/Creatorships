@@ -2,26 +2,92 @@ import React from 'react';
 import { useState } from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import axios from 'axios'
+import { ToastContainer, toast } from "react-toastify";
 
 export function ForBusinessPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [link, setLink] = useState("");
+  
+  const [inputValue, setInputValue] = useState({
+    name: "",
+    email: "",
+    link: "",
+  });
+  const {name, email, link} = inputValue;
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+    });
+    const handleForm = async (e) => {
+      e.preventDefault();
+      try {
+        const { data } = await axios.post(
+          "http://localhost:4000/api/businesses",
+          {
+            ...inputValue,
+          },
+          { withCredentials: true }
+        );
+        console.log(data);
+        const { success, message } = data;
+        if (success) {
+          handleSuccess(message);
+          window.scrollTo(0, 0);
+        } else {
+          handleError(message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setInputValue({
+        ...inputValue,
+        name: "",
+        email: "",
+        link: "",
+      });
+    };
 
-  const handleAddBusiness = () => {
-    //add a new note to the server
-    axios
-        .post("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:5000/api/businesses", {name, email, link})
-        .then((response) => {
+
+  
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [link, setLink] = useState("");
+  // const handleSuccess = (msg) =>
+  //   toast.success(msg, {
+  //     position: "top-right",
+  //   });
+  // const handleAddBusiness = () => {
+  //   //add a new note to the server
+  //  const data =  axios
+  //       .post("http://localhost:4000/api/businesses", {name, email, link})
+  //       .then((response) => {
           
-          setName("")
-          setEmail("")
-          setLink("")
-        })
-        .catch((error) => console.error("Error adding note:", error))
-  }
+  //         setName("")
+  //         setEmail("")
+  //         setLink("")
+  //       })
+  //       .catch((error) => console.error("Error adding note:", error))
+
+  //       const { success, message } = data;
+  //         console.log(data)
+  //       if (success) {
+  //         handleSuccess(message);
+  //         setTimeout(() => {
+  //           navigate("/");
+  //         }, 1000);}
+  // }
   return (
     <div className="mx-auto max-w-7xl">
+      <ToastContainer />
       <div className="mx-auto max-w-7xl lg:px-8">
         <div className="flex flex-col justify-center px-4 pt-10 lg:px-6">
           <div className="rounded-lg bg-gray-200">
@@ -46,7 +112,7 @@ export function ForBusinessPage() {
               your niche.
             </p>
             <div>
-              <form onSubmit={handleAddBusiness} className="mt-8">
+              <form onSubmit={handleForm} className="mt-8">
                 <div className="space-y-5">
                   <div>
                     <label
@@ -59,9 +125,11 @@ export function ForBusinessPage() {
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
+                        name='name'
+                        value={name}
                         placeholder="Name"
                         required
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleOnchange}
                         
                       ></input>
                     </div>
@@ -78,9 +146,11 @@ export function ForBusinessPage() {
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
+                        name='email'
+                        value={email}
                         placeholder="Email"
                         required
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleOnchange}
                         
                       ></input>
                     </div>
@@ -97,9 +167,11 @@ export function ForBusinessPage() {
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="text"
+                        name='link'
+                        value={link}
                         placeholder="Website"
                         required
-                        onChange={(e) => setLink(e.target.value)}
+                        onChange={handleOnchange}
                         
                       ></input>
                     </div>
@@ -123,10 +195,10 @@ export function ForBusinessPage() {
                 <div className=" border-b">
                   <div className="px-9 py-7">
                     <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">
-                      Standard
+                      Startups
                     </h3>
                     <p className="font-medium leading-relaxed text-gray-500">
-                      Lorem ipsum dolor sit amet, consect etur adipiscing maror.
+                      Are you a startup ?
                     </p>
                   </div>
                 </div>
@@ -174,10 +246,10 @@ export function ForBusinessPage() {
                 <div className=" border-b">
                   <div className="px-9 py-7">
                     <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">
-                      Standard
+                      Brands
                     </h3>
                     <p className="font-medium leading-relaxed text-gray-500">
-                      Lorem ipsum dolor sit amet, consect etur adipiscing maror.
+                      Are you a business or brand ?
                     </p>
                   </div>
                 </div>

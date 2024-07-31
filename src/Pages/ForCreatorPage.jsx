@@ -2,57 +2,64 @@ import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { DollarSign, Zap, Moon, Filter } from 'lucide-react';
 import axios from 'axios'
-// import Alert from '../Components/Alert';
-// import { Route } from 'react-router-dom';
-
-
-
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export function ForCreatorPage() {
-    // const [creators, setCreators] = useState({
-    // name: '',
-    // email: '',
-    // link: ''
-    // });  
-    // const handleChange = (e) => {  
-    // const { name, value } = e.target;   
-    // setCreators({...creators, [name]: value });  
-    // };   
-    // const handleSubmit = async (e) => {  
-    // e.preventDefault();
-    // try {   
-    // const response = await axios.post("http://localhost:5000/api/creators", creators);   
-    // console.log('Form data submitted successfully:', response.data);
-    // setCreators   
-    // } catch (error) {   
-    // console.error('Error submitting form data:',error);
-    // }   
-    // };
-
-
-  const [creators, setCreators] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [link, setLink] = useState("");
-  const [isActive, setActive] = useState("true");
-
-  const handleAddCreator = () => {
-    //add a new note to the server
-    
-    
-    axios
-        .post("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:5000/api/creators", {name, email, link})
-        .then((response) => {
-          setCreators([...creators, response.data])
-          setActive(!isActive)
-          
-        })
-        .catch((error) => console.error("Error adding note:", error))
-
-  }
+  const navigate = useNavigate()
+  const [inputValue, setInputValue] = useState({
+    name: "",
+    email: "",
+    link: "",
+  });
+  const {name, email, link} = inputValue;
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+    });
+    const handleForm = async (e) => {
+      e.preventDefault();
+      try {
+        const { data } = await axios.post(
+          "http://localhost:4000/api/creators",
+          {
+            ...inputValue,
+          },
+          { withCredentials: true }
+        );
+        console.log(data);
+        const { success, message } = data;
+        if (success) {
+          handleSuccess(message);
+          window.scrollTo(0, 0);
+        } else {
+          handleError(message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setInputValue({
+        ...inputValue,
+        name: "",
+        email: "",
+        link: "",
+      });
+    };
 
   return (
     <div className="mx-auto max-w-7xl">
+      <ToastContainer />
       {/* <div className={ isActive ? 'hidden' : '' }>
         <Alert />
       </div> */}
@@ -85,7 +92,7 @@ export function ForCreatorPage() {
           </div>
           <div className="mt-2 lg:grid grid-cols-4 gap-4">
             <div>
-              <form onSubmit={handleAddCreator} className="mt-8">
+              <form onSubmit={handleForm} className="mt-8">
                 <div className="space-y-5">
                   <div>
                     <label
@@ -100,9 +107,10 @@ export function ForCreatorPage() {
                         type="text"
                         placeholder="Name"
                         
-                        
+                        name='name'
+                        value={name}
                         required
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleOnchange}
                         // onChange={handleChange}
                       ></input>
                     </div>
@@ -120,10 +128,11 @@ export function ForCreatorPage() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Email"
-                        
+                        name='email'
+                        value={email}
                         
                         required
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleOnchange}
                         // onChange={handleChange}
                       ></input>
                     </div>
@@ -142,7 +151,9 @@ export function ForCreatorPage() {
                         type="text"
                         placeholder="insta profile"
                         required
-                        onChange={(e) => setLink(e.target.value)}
+                        name='link'
+                        value={link}
+                        onChange={handleOnchange}
                         // onChange={handleChange}
                         
                         
@@ -160,6 +171,7 @@ export function ForCreatorPage() {
                     </button>
                   </div>
                 </div>
+                
               </form>
             </div>
             <div className="mt-20 grid grid-cols-1 gap-y-8 text-center">
@@ -168,11 +180,10 @@ export function ForCreatorPage() {
                   <DollarSign className="h-9 w-9 text-gray-700" />
                 </div>
                 <h3 className="mt-8 text-lg font-semibold text-black">
-                  Secured Payments
+                  Own Equity in startups
                 </h3>
                 <p className="mt-4 text-sm text-gray-600">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Get anywhere between 2-10% of the company depending on your deliverables.
                 </p>
               </div>
             </div>
@@ -182,11 +193,10 @@ export function ForCreatorPage() {
                   <Moon className="h-9 w-9 text-gray-700" />
                 </div>
                 <h3 className="mt-8 text-lg font-semibold text-black">
-                  Light & Dark Version
+                  Long term partnerships
                 </h3>
                 <p className="mt-4 text-sm text-gray-600">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Commitment is required from both ends to meet specific goals.
                 </p>
               </div>
             </div>
@@ -196,11 +206,10 @@ export function ForCreatorPage() {
                   <Zap className="h-9 w-9 text-gray-700" />
                 </div>
                 <h3 className="mt-8 text-lg font-semibold text-black">
-                  Fast & Easy to Load
+                  wealth Creation
                 </h3>
                 <p className="mt-4 text-sm text-gray-600">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Wealth is created only by building businesses and owning some equity.
                 </p>
               </div>
             </div>

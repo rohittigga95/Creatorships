@@ -6,6 +6,8 @@ import { ForBusinessPage } from '../Pages/ForBusinessPage';
 import { LoginSignupPage } from '../Pages/LoginSignupPage';
 import { Contact } from '../Pages/Contact';
 import { Admin } from '../Pages/Admin';
+import Dashboard  from '../Pages/Dashboard';
+import { AdminLogin } from '../Pages/AdminLogin';
 
 
 const router = createBrowserRouter([
@@ -25,9 +27,9 @@ const router = createBrowserRouter([
     children: [{ path: '/business', element: <ForBusinessPage /> }],
   },
   {
-    path: '/account',
+    path: '/login',
     element: <App />,
-    children: [{ path: '/account', element: <LoginSignupPage /> }],
+    children: [{ path: '/login', element: <LoginSignupPage /> }],
   },
   {
     path: '/contact',
@@ -35,9 +37,19 @@ const router = createBrowserRouter([
     children: [{ path: '/contact', element: <Contact /> }],
   },
   {
+    path: '/admindashboard',
+    element: <App />,
+    children: [{ path: '/admindashboard', element: <Admin /> }],
+  },
+  {
     path: '/admin',
     element: <App />,
-    children: [{ path: '/admin', element: <Admin /> }],
+    children: [{ path: '/admin', element: <AdminLogin /> }],
+  },
+  {
+    path: '/dashboard',
+    element: <App />,
+    children: [{ path: '/dashboard', element: <Dashboard /> }],
   },
 ]);
 

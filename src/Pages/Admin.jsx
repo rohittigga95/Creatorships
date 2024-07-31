@@ -2,9 +2,37 @@ import React, { useEffect, useState } from 'react'
 import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 'lucide-react'
 import ListComponent from '../Components/ListComponent'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 export function Admin() {
-  
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const [userType, setUserType] = useState("");
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("/admin");
+      }
+      const { data } = await axios.post(
+        "http://localhost:4000/admindashboard",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      setUserType(user);
+      return status
+        ? toast(`Hello ${user}`, {
+            position: "top-right",
+          })
+        : (removeCookie("token"), navigate("/admin"));
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+  const Logout = () => {
+    removeCookie("token");
+    navigate("/");
+  };
 
   
   return (

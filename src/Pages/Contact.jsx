@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
-import { Menu, X, MapPin } from 'lucide-react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { ToastContainer, toast } from "react-toastify";
 
 const locations = [
   {
@@ -35,7 +36,7 @@ const users = [
     position: 'Back-end developer',
   },
   {
-    name: 'Gabrielle Fernandez',
+    name: 'Gabrielle Feernandez',
     image:
       'https://images.unsplash.com/photo-1549351512-c5e12b11e283?q=80&fm=jpg&crop=faces&fit=crop&h=600&w=600',
     position: 'Sales',
@@ -51,15 +52,64 @@ const users = [
 
 
 export function Contact() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const [inputValue, setInputValue] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    phone: "",
+    msg: "",
+  });
+  const { fname, lname, email, phone, msg } = inputValue;
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+    });
+  const handleForm = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/api/contact",
+        {
+          ...inputValue,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
+      const { success, message } = data;
+      if (success) {
+        handleSuccess(message);
+        window.scrollTo(0, 0);
+      } else {
+        handleError(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setInputValue({
+      ...inputValue,
+      fname: "",
+      lname: "",
+      email: "",
+      phone: "",
+      msg: "",
+    });
   };
 
   return (
     <>
       <div>
+        <ToastContainer />
         <div className="mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-7xl py-12 md:py-24">
             <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
@@ -72,7 +122,7 @@ export function Contact() {
                   <p className="mt-4 text-lg text-gray-600">
                     Our friendly team would love to hear from you.
                   </p>
-                  <form action="" className="mt-8 space-y-4">
+                  <form onSubmit={handleForm} className="mt-8 space-y-4">
                     <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
                       <div className="grid w-full  items-center gap-1.5">
                         <label
@@ -84,21 +134,27 @@ export function Contact() {
                         <input
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                           type="text"
-                          id="first_name"
+                          name="fname"
+                          required
+                          value={fname}
+                          onChange={handleOnchange}
                           placeholder="First Name"
                         />
                       </div>
                       <div className="grid w-full  items-center gap-1.5">
                         <label
                           className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          htmlFor="last_name"
+                          
                         >
                           Last Name
                         </label>
                         <input
                           className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                           type="text"
-                          id="last_name"
+                          name="lname"
+                          value={lname}
+                          required
+                          onChange={handleOnchange}
                           placeholder="Last Name"
                         />
                       </div>
@@ -106,47 +162,56 @@ export function Contact() {
                     <div className="grid w-full  items-center gap-1.5">
                       <label
                         className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="email"
+                        
                       >
                         Email
                       </label>
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="text"
-                        id="email"
+                        name="email"
+                        value={email}
+                        required
+                        onChange={handleOnchange}
                         placeholder="Email"
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
                       <label
                         className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="phone_number"
+                        
                       >
                         Phone number
                       </label>
                       <input
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="tel"
-                        id="phone_number"
+                        name="phone"
+                        value={phone}
+                        required
+                        onChange={handleOnchange}
                         placeholder="Phone number"
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
                       <label
                         className="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="message"
+                        
                       >
                         Message
                       </label>
                       <textarea
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        id="message"
+                        name="msg"
+                        value={msg}
+                        required
+                        onChange={handleOnchange}
                         placeholder="Leave us a message"
                         cols={3}
                       />
                     </div>
                     <button
-                      type="button"
+                      type="submit"
                       className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                       Send Message

@@ -4,10 +4,10 @@ export default function Hero() {
   return (
     <div className="relative w-full bg-white">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-        <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
-          <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
-            <div className="rounded-full bg-white p-1 px-2">
-              <p className="text-sm font-medium">Equity &#128200;</p>
+        <div className="flex flex-col justify-center px-4 py-5 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
+          <div className="flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
+            <div className="rounded-full bg-white p-2">
+              <p className="text-xs md:text-sm font-medium">Equity &#128200;</p>
             </div>
             <p className="text-sm font-medium">
               Partnership between creators and businesses &#x1F91D;
@@ -36,7 +36,7 @@ export default function Hero() {
             <div>
               <button
                 type="button"
-                className="rounded-md bg-black px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                className="text-xs rounded-md bg-black p-1 md:px-3 md:py-2.5 md:text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 I'm Interested
               </button>
