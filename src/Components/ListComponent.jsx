@@ -31,21 +31,21 @@ useEffect(() => {
   axios
       .get("http://localhost:4000/api/creators")
       .then((response) => setCreators(response.data))
-      .catch((error) => console.error("Error fetching notes:", error))
+      .catch((error) => console.error("Error fetching creators:", error))
 }, [])
 useEffect(() => {
   //fetch notes from the server
   axios
       .get("http://localhost:4000/api/businesses")
       .then((response) => setBusinesses(response.data))
-      .catch((error) => console.error("Error fetching notes:", error))
+      .catch((error) => console.error("Error fetching businesses:", error))
 }, [])
   return (
     <>
       <section className="w-full max-w-7xl py-4 mx-5">
         <div className="flex flex-col space-y-4  md:flex-row md:items-center md:justify-between md:space-y-0">
           <div className='grid '>
-            <h2 className="text-lg font-semibold">Customers</h2>
+            <h2 className="text-lg font-semibold">Customers Data</h2>
             <p className="mt-1 text-sm text-gray-700">
               This is a list of all creators and businesses who have filled the form.
             </p>

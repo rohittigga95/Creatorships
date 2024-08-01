@@ -73,8 +73,8 @@ export function ForCreatorPage() {
               alt=""
             />
           </div>
-          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-xl text-center">
+          <div className="mx-auto max-w-screen-lg px-4 py-4 sm:px-6 lg:px-8">
+            <div className="mx-auto text-center">
               <div className="mx-auto inline-flex rounded-full bg-gray-100 px-4 py-1.5">
                 <p className="text-xs font-semibold uppercase tracking-widest text-black">
                   You would get equity against deliverables
@@ -163,7 +163,7 @@ export function ForCreatorPage() {
                   <div>
                     <button
                     type='submit'
-                      className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                      className="inline-flex w-full items-center justify-center rounded-md bg-cyan-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-cyan-800"
                       
                     
                     >

@@ -55,36 +55,6 @@ export function ForBusinessPage() {
         link: "",
       });
     };
-
-
-  
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [link, setLink] = useState("");
-  // const handleSuccess = (msg) =>
-  //   toast.success(msg, {
-  //     position: "top-right",
-  //   });
-  // const handleAddBusiness = () => {
-  //   //add a new note to the server
-  //  const data =  axios
-  //       .post("http://localhost:4000/api/businesses", {name, email, link})
-  //       .then((response) => {
-          
-  //         setName("")
-  //         setEmail("")
-  //         setLink("")
-  //       })
-  //       .catch((error) => console.error("Error adding note:", error))
-
-  //       const { success, message } = data;
-  //         console.log(data)
-  //       if (success) {
-  //         handleSuccess(message);
-  //         setTimeout(() => {
-  //           navigate("/");
-  //         }, 1000);}
-  // }
   return (
     <div className="mx-auto max-w-7xl">
       <ToastContainer />
@@ -179,7 +149,7 @@ export function ForBusinessPage() {
                   <div>
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                      className="inline-flex w-full items-center justify-center rounded-md bg-cyan-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-cyan-800"
                     
                     >
                       Get started <ArrowRight className="ml-2" size={16} />
@@ -204,37 +174,25 @@ export function ForBusinessPage() {
                 </div>
                 <div className="px-9 pb-9 pt-8">
                   <p className="mb-6 font-medium leading-relaxed text-gray-600">
-                    Features included:
+                    Services included:
                   </p>
                   <ul className="mb-11">
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        3 Team Members
+                        Range of creators
                       </p>
                     </li>
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        1200+ UI Blocks
+                        Colabration Tools
                       </p>
                     </li>
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        10 GB Cloud Storage
-                      </p>
-                    </li>
-                    <li className="mb-4 flex items-center">
-                      <CheckCircle className="mr-2" size={16} />
-                      <p className="font-semibold leading-normal">
-                        Individual Email Account
-                      </p>
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2" size={16} />
-                      <p className="font-semibold leading-normal">
-                        Premium Support
+                        Legal Support
                       </p>
                     </li>
                   </ul>
@@ -249,43 +207,37 @@ export function ForBusinessPage() {
                       Brands
                     </h3>
                     <p className="font-medium leading-relaxed text-gray-500">
-                      Are you a business or brand ?
+                      Are you running a business or brand ?
                     </p>
                   </div>
                 </div>
                 <div className="px-9 pb-9 pt-8">
                   <p className="mb-6 font-medium leading-relaxed text-gray-600">
-                    Features included:
+                    Services included:
                   </p>
                   <ul className="mb-11">
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        3 Team Members
+                        Branded colab
                       </p>
                     </li>
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        1200+ UI Blocks
+                        Onboarding
                       </p>
                     </li>
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        10 GB Cloud Storage
+                        Relationship Manager
                       </p>
                     </li>
                     <li className="mb-4 flex items-center">
                       <CheckCircle className="mr-2" size={16} />
                       <p className="font-semibold leading-normal">
-                        Individual Email Account
-                      </p>
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="mr-2" size={16} />
-                      <p className="font-semibold leading-normal">
-                        Premium Support
+                        End to End Support
                       </p>
                     </li>
                   </ul>

@@ -3,12 +3,10 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { useCookies } from 'react-cookie';
-
+import Cookies from 'js-cookie';
 
 export function LoginSignupPage() {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
   const [createAccount, SetCreateAccount] = useState(false);
   const handleCreateAcc = () => {
     SetCreateAccount(!createAccount);
@@ -33,7 +31,7 @@ export function LoginSignupPage() {
       });
     const handleSuccess = (msg) =>
       toast.success(msg, {
-        position: "buttom-right",
+        position: "top-right",
       });
     const handleSignup = async (e) => {
       e.preventDefault();
@@ -51,7 +49,6 @@ export function LoginSignupPage() {
           setTimeout(() => {
             navigate("/dashboard");
           }, 1000);
-          forceUpdate();
         } else {
           handleError(message);
         }
@@ -93,6 +90,7 @@ export function LoginSignupPage() {
         email: "",
         password: "",
       });
+      isLoggedIn = true;
     };
 
 
@@ -200,19 +198,38 @@ export function LoginSignupPage() {
           </div>
           <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
             <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-              <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-                Sign in
+              {
+                !createAccount
+                ? <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
+                Login
               </h2>
-              <p className="mt-2 text-sm text-gray-600">
+              : <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
+              Signup
+            </h2>
+              }
+              {
+                !createAccount
+                ? <p className="mt-2 text-sm text-gray-600">
                 Don&apos;t have an account?{' '}
-                <a
+                <button
                   onClick={handleCreateAcc}
                   title=""
-                  className="font-semibold text-black transition-all duration-200 hover:underline"
+                  className="font-semibold text-cyan-700 transition-all duration-200"
                 >
                   Create account
-                </a>
+                </button>
               </p>
+              : <p className="mt-2 text-sm text-gray-600">
+              Have an account?{' '}
+              <button
+                onClick={handleCreateAcc}
+                title=""
+                className="font-semibold text-cyan-700 transition-all duration-200"
+              >
+                Login
+              </button>
+            </p>
+              }
               {
                 !createAccount
                   ? <form onSubmit={handleLogin} className="mt-8">
@@ -268,7 +285,7 @@ export function LoginSignupPage() {
                       <div>
                         <button
                           type="submit"
-                          className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                          className="inline-flex w-full items-center justify-center rounded-md bg-cyan-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-cyan-800"
                         >
                           Login <ArrowRight className="ml-2" size={16} />
                         </button>
@@ -318,19 +335,19 @@ export function LoginSignupPage() {
                           ></input>
                         </div>
                       </div>
-                      <div>
-                        <div className="mt-2">
+                      <div className=''>
+                        <div className="">
                           {/* onChange={this.setGender.bind(this)} */}
-                          <div className='flex gap-5' >
-                            <input onChange={handleOnchange} type="radio" value="creator" name="userType" /> Creator
-                            <input onChange={handleOnchange} type="radio" value="business" name="userType" /> Business
+                          <div className='flex gap-5 mt-5' >
+                            <input onChange={handleOnchange} type="radio" className='mt-1' value="creator" name="userType" /> Creator
+                            <input onChange={handleOnchange} type="radio" className='mt-1' value="business" name="userType" /> Business
                           </div>
                         </div>
                       </div>
                       <div>
                         <button
                           type="submit"
-                          className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                          className="inline-flex w-full items-center justify-center rounded-md bg-cyan-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-cyan-800"
                         >
                           Signup <ArrowRight className="ml-2" size={16} />
                         </button>

@@ -3,15 +3,16 @@ import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 
 import ListComponent from '../Components/ListComponent'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import Cookies from 'js-cookie';
+import { ToastContainer, toast } from "react-toastify";
+import ContactList from '../Components/ContactList';
 
 export function Admin() {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
   const [userType, setUserType] = useState("");
   useEffect(() => {
     const verifyCookie = async () => {
-      if (!cookies.token) {
+      if (!Cookies.get("token")) {
         navigate("/admin");
       }
       const { data } = await axios.post(
@@ -25,14 +26,10 @@ export function Admin() {
         ? toast(`Hello ${user}`, {
             position: "top-right",
           })
-        : (removeCookie("token"), navigate("/admin"));
+        : (Cookies.remove('token'), navigate("/admin"));
     };
     verifyCookie();
-  }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
-    removeCookie("token");
-    navigate("/");
-  };
+  }, [Cookies, navigate]);
 
   
   return (
@@ -108,10 +105,9 @@ export function Admin() {
     </aside>
     </div>
     <div className="flex-initial w-200">
-        
             <ListComponent />
     
-        
+            <ContactList />
     </div>
     
     </div>

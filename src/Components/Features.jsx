@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Features() {
   return (
-    <div className="mx-auto max-w-7xl px-2 lg:px-8">
+    <div className="mx-auto p-4 bg-gray-100 max-w-7xl px-2 lg:px-8">
       <div className="grid grid-cols-1 gap-y-8 text-center sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
         <div>
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
