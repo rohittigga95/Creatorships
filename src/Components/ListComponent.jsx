@@ -29,14 +29,14 @@ const [businesses, setBusinesses] = useState([]);
 useEffect(() => {
   //fetch notes from the server
   axios
-      .get("http://3.6.89.177:4000/api/creators")
+      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/creators")
       .then((response) => setCreators(response.data))
       .catch((error) => console.error("Error fetching creators:", error))
 }, [])
 useEffect(() => {
   //fetch notes from the server
   axios
-      .get("http://3.6.89.177:4000/api/businesses")
+      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/businesses")
       .then((response) => setBusinesses(response.data))
       .catch((error) => console.error("Error fetching businesses:", error))
 }, [])

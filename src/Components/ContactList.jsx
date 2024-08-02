@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react'
 const ContactList = () => {
     const [contacts, setContacts] = useState([]);
 useEffect(() => {
-  //fetch notes from the server
   axios
-      .get("http://3.6.89.177:4000/api/contacts")
+      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/contacts")
       .then((response) => setContacts(response.data))
-      .catch((error) => console.error("Error fetching creators:", error))
+      .catch((error) => console.error("Error fetching contacts:", error))
 }, [])
   return (
     <section className="w-full max-w-7xl py-4 mx-5">
@@ -47,7 +46,7 @@ useEffect(() => {
                   
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {contacts.map((contact) => (
-                      <tr key={contact.name}>
+                      <tr key={contact.email}>
                         <td className="whitespace-nowrap px-3 py-4">
                           <div className="flex items-center">
                             <div className="ml-4">

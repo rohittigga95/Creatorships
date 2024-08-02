@@ -31,7 +31,7 @@ export function ForBusinessPage() {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://3.6.89.177:4000/api/businesses",
+          "http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/businesses",
           {
             ...inputValue,
           },

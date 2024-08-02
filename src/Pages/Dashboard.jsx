@@ -68,7 +68,7 @@ const Dashboard = () => {
         navigate("/login");
       }
       const { data } = await axios.post(
-        "http://3.6.89.177:4000",
+        "http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000",
         {},
         { withCredentials: true }
       );
