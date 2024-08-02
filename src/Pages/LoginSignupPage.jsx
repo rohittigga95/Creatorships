@@ -90,7 +90,7 @@ export function LoginSignupPage() {
         email: "",
         password: "",
       });
-      isLoggedIn = true;
+      
     };
 
 

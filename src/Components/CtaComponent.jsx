@@ -1,4 +1,7 @@
 import React from 'react';
+import { render } from "react-dom";
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 export function CtaComponent() {
   return (
@@ -36,7 +39,10 @@ export function CtaComponent() {
           <p className="mx-auto mt-6 max-w-xl text-base text-gray-600 md:mt-10 lg:text-xl">
             we welcome creators, startups, businesses, brands to work together.
           </p>
-          
+          <LiteYouTubeEmbed
+            id="L2vS_050c-M"
+            title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
+          />
           <button
             type="button"
             className="mt-8 rounded-md bg-cyan-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"

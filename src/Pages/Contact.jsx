@@ -3,6 +3,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
+import StartupList from '../Components/StartupList';
 
 const locations = [
   {
@@ -300,6 +301,8 @@ export function Contact() {
           </div>
         </div>
       </div>
+
+      
     </>
   );
 }
