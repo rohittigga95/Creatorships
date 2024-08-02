@@ -16,7 +16,7 @@ export function Admin() {
         navigate("/admin");
       }
       const { data } = await axios.post(
-        "http://localhost:4000/admindashboard",
+        "http://3.6.89.177:4000/admindashboard",
         {},
         { withCredentials: true }
       );

@@ -30,7 +30,7 @@ export function AdminLogin() {
         e.preventDefault();
         try {
           const { data } = await axios.post(
-            "http://localhost:4000/admin",
+            "http://3.6.89.177:4000/admin",
             {
               ...inputValue,
             },

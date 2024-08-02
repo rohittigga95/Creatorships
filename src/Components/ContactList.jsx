@@ -6,7 +6,7 @@ const ContactList = () => {
 useEffect(() => {
   //fetch notes from the server
   axios
-      .get("http://localhost:4000/api/contacts")
+      .get("http://3.6.89.177:4000/api/contacts")
       .then((response) => setContacts(response.data))
       .catch((error) => console.error("Error fetching creators:", error))
 }, [])

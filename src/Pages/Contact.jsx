@@ -80,7 +80,7 @@ export function Contact() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/contact",
+        "http://3.6.89.177:4000/api/contact",
         {
           ...inputValue,
         },

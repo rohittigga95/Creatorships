@@ -37,7 +37,7 @@ export function LoginSignupPage() {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://localhost:4000/signup",
+          "http://3.6.89.177:4000/signup",
           {
             ...inputValue,
           },
@@ -66,7 +66,7 @@ export function LoginSignupPage() {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://localhost:4000/login",
+          "http://3.6.89.177:4000/login",
           {
             ...inputValue,
           },

@@ -68,7 +68,7 @@ const Dashboard = () => {
         navigate("/login");
       }
       const { data } = await axios.post(
-        "http://localhost:4000",
+        "http://3.6.89.177:4000",
         {},
         { withCredentials: true }
       );

@@ -32,7 +32,7 @@ export function ForCreatorPage() {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://localhost:4000/api/creators",
+          "http://3.6.89.177:4000/api/creators",
           {
             ...inputValue,
           },
