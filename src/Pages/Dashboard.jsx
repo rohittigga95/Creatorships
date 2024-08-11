@@ -142,7 +142,12 @@ const Dashboard = () => {
         {" "}
         Data from seamless.ai
       </h4>
-      <SeamlessFetchStartups />
+      {
+        (userType==='creator')
+        ? <SeamlessFetchStartups />
+        : ''
+      }
+      
       <ToastContainer />
     </div>
   )
