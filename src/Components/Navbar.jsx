@@ -23,7 +23,6 @@ export function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
   const Logout = () => {
     Cookies.remove('token');
     navigate("/");
@@ -56,6 +55,7 @@ export function Navbar() {
               <li key={path}>
                 <NavLink
                   to={path}
+                  onClick={window.scrollTo(0, 0)}
                   className="text-sm font-semibold text-gray-800 hover:text-gray-900"
                 >
                   {title}
