@@ -7,6 +7,7 @@ import logo from '../assets/logo.svg'
 import Cookies from 'js-cookie';
 
 
+
 const navItems = [
   { path: '/', title: 'Home' },
   { path: '/creator', title: 'For Creators' },
@@ -25,6 +26,7 @@ export function Navbar() {
   };
   const Logout = () => {
     Cookies.remove('token');
+    
     navigate("/");
   };
   return (
