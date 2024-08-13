@@ -2,14 +2,75 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, Linkedin, MapPin } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
+import Select from 'react-dropdown-select';
 
 const SeamlessFetchStartups = () => {
     const [seamless, setSeamless] = useState([]);
+    const [countries, setCountries] = useState("");
+    const [industries, setIndustries] = useState("");
+    const [noOfRecord, setNoOfRecord] = useState("");
     const [inputValue, setInputValue] = useState({
         industry: "",
         country: "",
         recordNo: "",
     });
+    const country = [
+        {
+          value: "india",
+          label: "India"
+        },
+        {
+          value: "us",
+          label: "US"
+        },
+        {
+          value: "canada",
+          label: "Canada"
+        },
+        {
+          value: "germany",
+          label: "Germany"
+        }
+        
+      ];
+      const industry = [
+        {
+          value: "saas",
+          label: "SAAS"
+        },
+        {
+          value: "fmcg",
+          label: "FMCG"
+        },
+        {
+          value: "software",
+          label: "Software"
+        },
+        {
+          value: "automobile",
+          label: "Automobile"
+        }
+        
+      ];
+      const records = [
+        {
+          value: 10,
+          label: "10"
+        },
+        {
+          value: 20,
+          label: "20"
+        },
+        {
+          value: 30,
+          label: "30"
+        },
+        {
+          value: 40,
+          label: "40"
+        }
+        
+      ];
     // const { industry, country } = inputValue;
     const handleOnchange = (e) => {
         const { name, value } = e.target;
@@ -18,12 +79,13 @@ const SeamlessFetchStartups = () => {
             [name]: value,
         });
     };
+    
 
 
     const getSeamlessData = () => {
         axios
             .post("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/seamlessapi", {
-                ...inputValue,
+                countries,industries,noOfRecord,
             })
             .then((response) => {
                 setSeamless(response.data.companies.companies)
@@ -39,7 +101,7 @@ const SeamlessFetchStartups = () => {
                 Data from seamless.ai
             </h4>
             <form className="mt-5">
-                <div className="flex space-x-6">
+                <div className="grid gap-2 md:flex md:space-x-6">
                     <div className='space-x-2'>
                         <label
                             htmlFor=""
@@ -48,13 +110,14 @@ const SeamlessFetchStartups = () => {
 
                             Country:
                         </label>
-                        <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm' name="country">
-                            <option>select</option>
+                        <Select options={country} onChange={([values]) => setCountries(values.value) } />
+                        {/* <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm' name="country">
+                            <option className='text-sm'>select</option>
                             <option value="india">India</option>
                             <option value="us">US</option>
                             <option value="canada">Canada</option>
                             <option value="germany">Germany</option>
-                        </select>
+                        </select> */}
                     </div>
                     <div className='space-x-2'>
                         <label
@@ -63,13 +126,14 @@ const SeamlessFetchStartups = () => {
                         >
                             Industry:
                         </label>
-                        <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm' name="industry">
+                        <Select options={industry} onChange={([values]) => setIndustries(values.value)} />
+                        {/* <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm after:text-sm' name="industry">
                             <option>select</option>
                             <option value="saas">SAAS</option>
                             <option value="fmcg">FMCG</option>
                             <option value="software">Software</option>
                             <option value="automobile">Automobile</option>
-                        </select>
+                        </select> */}
                     </div>
                     <div className='space-x-2'>
                         <label
@@ -78,21 +142,22 @@ const SeamlessFetchStartups = () => {
                         >
                             No of records:
                         </label>
-                        <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm' name="recordNo">
+                        <Select options={records} onChange={([values]) => setNoOfRecord(values.value)} />
+                        {/* <select onChange={handleOnchange} className='bg-cyan-50 rounded-md p-1 text-sm' name="recordNo">
                             <option>select</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
                             <option value="40">40</option>
-                        </select>
+                        </select> */}
                     </div>
-                    <div className='pl-10'>
+                    <div className='pl-10 pt-6'>
                     <button
                         type="button"
                         onClick={getSeamlessData}
-                        className="text-sm inline-flex w-25 pl-1 pr-1 items-center justify-center rounded-md bg-cyan-500   leading-7 text-white hover:bg-cyan-800"
+                        className="rounded-md bg-cyan-500 px-2.5 py-1.5 text-md font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
-                        Get Data <ArrowRight className="" size={12} />
+                        Get Data
                     </button>
                     </div>
                     
