@@ -106,14 +106,14 @@ export function LoginSignupPage() {
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
-            <div className="relative">
+            <div className="absolute md:relative">
               <div className="w-full max-w-xl xl:mx-auto xl:w-full xl:max-w-xl xl:pr-24">
-                <h3 className="text-4xl font-bold text-white">
+                <h3 className="text-base md:text-4xl font-bold text-white">
                   Are you any of the below, We can help you meet and grow
                 </h3>
-                <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+                <ul className="mt-1 md:mt-10 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
                   <li className="flex items-center space-x-3">
-                    <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
+                    <div className="inline-flex h-4 w-4 md:h-5 md:w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
                       <svg
                         className="h-3.5 w-3.5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -127,13 +127,13 @@ export function LoginSignupPage() {
                         ></path>
                       </svg>
                     </div>
-                    <span className="text-lg font-medium text-white">
+                    <span className="text-sm md:text-lg font-medium text-white">
                       {' '}
                       Creator/Influencer
                     </span>
                   </li>
                   <li className="flex items-center space-x-3">
-                    <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
+                    <div className="inline-flex h-4 w-4 md:h-5 md:w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
                       <svg
                         className="h-3.5 w-3.5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -147,13 +147,13 @@ export function LoginSignupPage() {
                         ></path>
                       </svg>
                     </div>
-                    <span className="text-lg font-medium text-white">
+                    <span className="text-sm md:text-lg font-medium text-white">
                       {' '}
                       Youtuber{' '}
                     </span>
                   </li>
                   <li className="flex items-center space-x-3">
-                    <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
+                    <div className="inline-flex h-4 w-4 md:h-5 md:w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
                       <svg
                         className="h-3.5 w-3.5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -167,13 +167,13 @@ export function LoginSignupPage() {
                         ></path>
                       </svg>
                     </div>
-                    <span className="text-lg font-medium text-white">
+                    <span className="text-sm md:text-lg font-medium text-white">
                       {' '}
                       Startup{' '}
                     </span>
                   </li>
                   <li className="flex items-center space-x-3">
-                    <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
+                    <div className="inline-flex h-4 w-4 md:h-5 md:w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
                       <svg
                         className="h-3.5 w-3.5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@ export function LoginSignupPage() {
                         ></path>
                       </svg>
                     </div>
-                    <span className="text-lg font-medium text-white">
+                    <span className="text-sm md:text-lg font-medium text-white">
                       {' '}
                       Brands{' '}
                     </span>
@@ -361,7 +361,7 @@ export function LoginSignupPage() {
             </div>
           </div>
         </div>
-        <hr className="mt-6" />
+        <hr className="" />
       </section>
     );
   }

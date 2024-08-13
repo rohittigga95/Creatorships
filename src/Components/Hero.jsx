@@ -6,7 +6,7 @@ export default function Hero() {
   useEffect(()=>{
 	  (async function () {
 		const cal = await getCalApi({"namespace":"10min"});
-		cal("ui", {"styles":{"branding":{"brandColor":"#000000"}},"hideEventTypeDetails":false,"layout":"month_view"});
+		cal("ui", {"styles":{"branding":{"brandColor":"#67e8f9"}},"hideEventTypeDetails":false,"layout":"month_view"});
 	  })();
 	}, [])
   return (
@@ -14,8 +14,9 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
         <div className="md:mt-20 flex-col justify-center px-4 py-5 md:py-16 lg:col-span-7 lg:gap-x-2 lg:px-2 lg:py-0 xl:col-span-6">
           <div className="flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
-            <div className="rounded-full bg-white p-2">
-              <p className="text-xs md:text-sm font-medium">Equity &#128200;</p>
+            <div className="flex rounded-full  bg-white p-2">
+              <p className="text-xs pt-1 md:pt-0 md:text-sm font-medium">Equity</p>
+              <p>&#128200;</p>
             </div>
             <p className="text-xs md:text-sm font-medium">
               Partnership between creators and businesses &#x1F91D;

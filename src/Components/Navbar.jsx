@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg'
+import logopng from '../assets/logo.png'
 import Cookies from 'js-cookie';
 
 
@@ -26,7 +27,7 @@ export function Navbar() {
   };
   const Logout = () => {
     Cookies.remove('token');
-    
+
     navigate("/");
   };
   return (
@@ -35,7 +36,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
-            <img src={logo} className='w-6' alt="" />
+            <img src={logopng} className='h-12' alt="" />
             {/* <svg
               width="30"
               height="30"
@@ -49,29 +50,28 @@ export function Navbar() {
               />
             </svg> */}
           </span>
-          <span className="font-bold">Creatorships</span>
         </div>
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
             {navItems.map(({ path, title }) => (
               <li key={path}>
-                { !Cookies.get("token")
-            ?
-                <NavLink
-                  to={path}
-                  onClick={window.scrollTo(0, 0)}
-                  className="text-sm font-semibold text-gray-800 hover:text-gray-900"
-                >
-                  {title}
-                </NavLink>
-                : ""
-}
+                {!Cookies.get("token")
+                  ?
+                  <NavLink
+                    to={path}
+                    onClick={window.scrollTo(0, 0)}
+                    className="text-sm font-semibold text-gray-800 hover:text-gray-900"
+                  >
+                    {title}
+                  </NavLink>
+                  : ""
+                }
               </li>
             ))}
           </ul>
         </div>
         <div className="hidden lg:block">
-          { !Cookies.get("token")
+          {!Cookies.get("token")
             ? <Link to={"/login"}>
               <button
                 type="button"
@@ -131,19 +131,26 @@ export function Navbar() {
                   <nav className="grid gap-y-4 text-center">
                     {navItems.map(({ path, title }) => (
                       <a className='' key={path}>
-                        <NavLink
-                          to={path}
-                          onClick={toggleMenu}
-                          className="text-sm p-3 font-semibold  text-gray-800 hover:text-gray-900"
-                        >
-                          {title}
-                        </NavLink>
+                        {!Cookies.get("token")
+                          ?
+                          <NavLink
+                            to={path}
+                            onClick={window.scrollTo(0, 0)}
+                            className="text-sm font-semibold text-gray-800 hover:text-gray-900"
+                          >
+                            {title}
+                          </NavLink>
+                          : ""
+                        }
                       </a>
                     ))}
                   </nav>
                 </div>
 
-                <Link onClick={toggleMenu} to="/login">
+                
+                {!Cookies.get("token")
+            ? <Link to={"/login"}>
+              <Link onClick={toggleMenu} to="/login">
                   <button
                     type="button"
                     className="mt-4 w-full rounded-md bg-cyan-500 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -151,6 +158,17 @@ export function Navbar() {
                     Login/Signup
                   </button>
                 </Link>
+            </Link>
+
+            : <button
+              type="button"
+              onClick={Logout}
+              className="mt-4 w-full rounded-md bg-cyan-500 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              Logout
+            </button>
+
+          }
               </div>
             </div>
           </div>
