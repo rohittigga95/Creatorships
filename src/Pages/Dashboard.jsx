@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import SeamlessFetchStartups from "../Components/SeamlessFetchStartups";
+import { Link, MapPin } from 'lucide-react'; 
 
 const businessesData = [
   {
@@ -68,7 +69,7 @@ const Dashboard = () => {
   const businessData = data.filter((data) => data.userType == 'business');
   useEffect(() => {
     axios
-      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/data")
+      .get("http://ec2-3-6-89-177.ap-south-1.compute.amazonaws.com:4000/api/data")   //ec2-3-6-89-177.ap-south-1.compute.amazonaws.com
       .then((response) => setData(response.data))
       .catch((error) => console.error("Error fetching contacts:", error))
 
@@ -94,27 +95,31 @@ const Dashboard = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <h4 className="text-3xl p-2 font-bold">
+      <h4 className="text-3xl p-5 font-bold">
         {" "}
         Welcome <span>{userType}</span>
       </h4>
-      <div className="p-5 flex justify-between">
+      <div className="p-10 flex justify-center">
         <div className="grid grid-cols-3">
 
           {
             (userType == 'creator')
               ? businessData.map((business) => (
-                <div key={business.name} className="m-1">
-                  <div className="max-w-xs rounded overflow-hidden shadow-lg">
-                    <img className="w-full" src={business.img} alt="creator image" />
+                <div key={business.name} className="m-4">
+                  <div className="max-w-xs rounded shadow-lg">
+                    
+                    <img className="object-cover " src={business.img} alt="creator image" />
+                    
+                    
                     <div className="px-6 py-4">
                       <div className="font-bold text-xl mb-2">{business.name}</div>
 
                     </div>
                     <div className="px-6 pb-2">
-                      <a target="_blank" href={business.link}> <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">Link</span></a>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">#Location</span>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">{business.place}</span>
+                      <a target="_blank" href={business.link}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link /><p className="mt-1">Website</p></span></a>
+                      <a > <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><MapPin /><p className="mt-1">{business.place}</p></span></a>
+                      {/* <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2"><MapPin />{business.place}</span>
+                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">{business.place}</span> */}
                     </div>
                   </div>
                 </div>
@@ -128,9 +133,8 @@ const Dashboard = () => {
 
                     </div>
                     <div className="px-6 pb-2">
-                      <a target="_blank" href={creator.link}> <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">Link</span></a>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">#Location</span>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">{creator.place}</span>
+                    <a target="_blank" href={creator.link}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link /><p className="mt-1">Instagram</p></span></a>
+                    <a > <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><MapPin /><p className="mt-1">{creator.place}</p></span></a>
                     </div>
                   </div>
                 </div>
@@ -138,7 +142,7 @@ const Dashboard = () => {
           }
         </div>
       </div>
-      <h4 className="text-3xl p-2 font-bold">
+      <h4 className="text-3xl p-5 font-bold">
         {" "}
         Data from seamless.ai
       </h4>
