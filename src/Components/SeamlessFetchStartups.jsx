@@ -39,11 +39,11 @@ const SeamlessFetchStartups = () => {
                 Data from seamless.ai
             </h4>
             <form className="mt-5">
-                <div className="flex space-x-2">
+                <div className="flex space-x-6">
                     <div className='space-x-2'>
                         <label
                             htmlFor=""
-                            className="text-base font-medium text-gray-900"
+                            className="text-lg font-medium text-gray-900"
                         >
 
                             Country:
@@ -56,10 +56,10 @@ const SeamlessFetchStartups = () => {
                             <option value="germany">Germany</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='space-x-2'>
                         <label
                             htmlFor=""
-                            className="text-base font-medium text-gray-900"
+                            className="text-lg font-medium text-gray-900"
                         >
                             Industry:
                         </label>
@@ -71,10 +71,10 @@ const SeamlessFetchStartups = () => {
                             <option value="automobile">Automobile</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='space-x-2'>
                         <label
                             htmlFor=""
-                            className="text-base font-medium text-gray-900"
+                            className="text-lg font-medium text-gray-900"
                         >
                             No of records:
                         </label>
@@ -86,14 +86,16 @@ const SeamlessFetchStartups = () => {
                             <option value="40">40</option>
                         </select>
                     </div>
-
+                    <div className='pl-10'>
                     <button
                         type="button"
                         onClick={getSeamlessData}
-                        className="text-xs inline-flex w-25 pl-1 pr-1 items-center justify-center rounded-md bg-cyan-500   leading-7 text-white hover:bg-cyan-800"
+                        className="text-sm inline-flex w-25 pl-1 pr-1 items-center justify-center rounded-md bg-cyan-500   leading-7 text-white hover:bg-cyan-800"
                     >
                         Get Data <ArrowRight className="" size={12} />
                     </button>
+                    </div>
+                    
 
                 </div>
             </form>
