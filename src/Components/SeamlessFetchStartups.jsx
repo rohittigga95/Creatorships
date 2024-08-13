@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, Linkedin, MapPin } from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
 import Select from 'react-dropdown-select';
 
 const SeamlessFetchStartups = () => {
