@@ -95,8 +95,8 @@ const Dashboard = () => {
   }, [Cookies, navigate]);
 
   return (
-    <div className="relative w-full bg-white">
-      <h4 className="text-3xl p-5 font-bold">
+    <div className="relative p-5 w-full bg-white">
+      <h4 className="text-3xl  font-bold">
         {" "}
         Welcome <span>{userType}</span>
       </h4>

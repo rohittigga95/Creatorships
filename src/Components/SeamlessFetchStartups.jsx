@@ -94,7 +94,7 @@ const SeamlessFetchStartups = () => {
     }
     // useEffect(getSeamlessData, []);
     return (
-        <div className=" p-10 justify-center">
+        <div className="justify-center">
             <h4 className="text-2xl  font-bold">
                 {" "}
                 Data from seamless.ai
@@ -150,7 +150,7 @@ const SeamlessFetchStartups = () => {
                             <option value="40">40</option>
                         </select> */}
                     </div>
-                    <div className='pl-10 pt-6'>
+                    <div className='pt-3 md:pl-5 md:pt-7'>
                     <button
                         type="button"
                         onClick={getSeamlessData}
@@ -163,7 +163,7 @@ const SeamlessFetchStartups = () => {
 
                 </div>
             </form>
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-2 md:grid-cols-4">
 
                 {
                     seamless.map((company) => (
@@ -171,10 +171,10 @@ const SeamlessFetchStartups = () => {
                             <div className="max-w-xs rounded overflow-hidden shadow-lg">
                                 {/* <img className="w-full" src={company.companyLogoUrl} alt="creator image" /> */}
                                 <div className="px-6 py-4">
-                                    <div className="font-bold text-xl mb-2">{company.name}</div>
+                                    <div className="font-bold text-sm md:text-xl mb-2">{company.name}</div>
 
                                 </div>
-                                <div className="px-6 pb-2">
+                                <div className="p-0.5 md:px-6 md:pb-2">
                                     <a target="_blank" href={`https://${company.Domain}`}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link /><p className="mt-1"></p></span></a>
                                     <a target="_blank" href={company.social.linkedin}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Linkedin color="#000000" /><p className="mt-1"></p></span></a>
                                     <a > <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><MapPin /><p className="mt-1">{company.city}</p></span></a>
