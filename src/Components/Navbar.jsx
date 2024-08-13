@@ -27,7 +27,7 @@ export function Navbar() {
   };
   const Logout = () => {
     Cookies.remove('token');
-    
+    toggleMenu();
     navigate("/");
   };
   return (
