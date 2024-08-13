@@ -32,7 +32,7 @@ export function Navbar() {
   };
   return (
 
-    <div className="sticky top-0 z-50 w-full bg-white p-3 border border-b-slate-700">
+    <div className="sticky top-0 z-40 w-full bg-white p-1 md:p-3 border border-b-slate-700">
       <div className="mx-auto flex max-w-7xl items-center justify-between sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
@@ -147,28 +147,28 @@ export function Navbar() {
                   </nav>
                 </div>
 
-                
+
                 {!Cookies.get("token")
-            ? <Link to={"/login"}>
-              <Link onClick={toggleMenu} to="/login">
-                  <button
+                  ? <Link to={"/login"}>
+                    <Link onClick={toggleMenu} to="/login">
+                      <button
+                        type="button"
+                        className="mt-4 w-full rounded-md bg-cyan-500 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                      >
+                        Login/Signup
+                      </button>
+                    </Link>
+                  </Link>
+
+                  : <button
                     type="button"
+                    onClick={Logout}
                     className="mt-4 w-full rounded-md bg-cyan-500 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
-                    Login/Signup
+                    Logout
                   </button>
-                </Link>
-            </Link>
 
-            : <button
-              type="button"
-              onClick={Logout}
-              className="mt-4 w-full rounded-md bg-cyan-500 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Logout
-            </button>
-
-          }
+                }
               </div>
             </div>
           </div>
