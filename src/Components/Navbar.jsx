@@ -55,6 +55,8 @@ export function Navbar() {
           <ul className="inline-flex space-x-8">
             {navItems.map(({ path, title }) => (
               <li key={path}>
+                { !Cookies.get("token")
+            ?
                 <NavLink
                   to={path}
                   onClick={window.scrollTo(0, 0)}
@@ -62,6 +64,8 @@ export function Navbar() {
                 >
                   {title}
                 </NavLink>
+                : ""
+}
               </li>
             ))}
           </ul>

@@ -33,9 +33,13 @@ const SeamlessFetchStartups = () => {
     }
     // useEffect(getSeamlessData, []);
     return (
-        <div className="grid justify-center">
-            <form className="mt-1">
-                <div className="flex space-x-2 justify-between">
+        <div className=" p-10 justify-center">
+            <h4 className="text-2xl  font-bold">
+                {" "}
+                Data from seamless.ai
+            </h4>
+            <form className="mt-5">
+                <div className="flex space-x-2">
                     <div className='space-x-2'>
                         <label
                             htmlFor=""
@@ -97,7 +101,7 @@ const SeamlessFetchStartups = () => {
 
                 {
                     seamless.map((company) => (
-                        <div key={company.name} className="m-4">
+                        <div key={company.domain} className="m-4">
                             <div className="max-w-xs rounded overflow-hidden shadow-lg">
                                 {/* <img className="w-full" src={company.companyLogoUrl} alt="creator image" /> */}
                                 <div className="px-6 py-4">

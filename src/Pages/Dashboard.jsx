@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import SeamlessFetchStartups from "../Components/SeamlessFetchStartups";
 import { Link, MapPin } from 'lucide-react'; 
+import { DashboardFeatures } from "../Components/DashboardFeatures";
 
 const businessesData = [
   {
@@ -99,7 +100,7 @@ const Dashboard = () => {
         {" "}
         Welcome <span>{userType}</span>
       </h4>
-      <div className="p-10 flex justify-center">
+      <div className="p-1 flex justify-center">
         <div className="grid grid-cols-3">
 
           {
@@ -142,16 +143,13 @@ const Dashboard = () => {
           }
         </div>
       </div>
-      <h4 className="text-3xl p-5 font-bold">
-        {" "}
-        Data from seamless.ai
-      </h4>
+      
       {
         (userType==='creator')
         ? <SeamlessFetchStartups />
         : ''
       }
-      
+      <DashboardFeatures />
       <ToastContainer />
     </div>
   )
