@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import SeamlessFetchStartups from "../Components/SeamlessFetchStartups";
-import { Link, MapPin } from 'lucide-react'; 
+import { Link, MapPin } from 'lucide-react';
 import { DashboardFeatures } from "../Components/DashboardFeatures";
 
 const businessesData = [
@@ -101,24 +101,24 @@ const Dashboard = () => {
         Welcome <span>{userType}</span>
       </h4>
       <div className="p-1 flex justify-center">
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-2  md:grid-cols-3">
 
           {
             (userType == 'creator')
               ? businessData.map((business) => (
-                <div key={business.name} className="m-4">
-                  <div className="max-w-xs rounded shadow-lg">
-                    
+                <div key={business.name} className="m-4 ">
+                  <div className="max-w-xs  rounded shadow-lg">
+
                     <img className="object-cover " src={business.img} alt="creator image" />
-                    
-                    
-                    <div className="px-6 py-4">
+
+
+                    <div className="p-2 md:px-6 md:py-4">
                       <div className="font-bold text-base md:text-xl mb-2">{business.name}</div>
 
                     </div>
-                    <div className="p-0 md:px-6 md:pb-2">
-                      <a target="_blank" href={business.link}> <span className="inline-flex bg-gray-200 rounded-full p-1 md:px-3 md:py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link className="h-4 md:h-6" /><p className="md:mt-1 pl-1">Website</p></span></a>
-                      <a > <span className="inline-flex bg-gray-200 rounded-full p-1 md:px-3 md:py-1 text-xs font-semibold text-gray-700 md:mr-2 md:mb-2 hover:bg-gray-400"><MapPin className="h-4 md:h-6" /><p className="md:mt-1 pl-1">{business.place}</p></span></a>
+                    <div className="p-1  md:px-6 md:pb-2">
+                      <a target="_blank" href={business.link}> <span className="inline-flex bg-gray-200 rounded-full p-2 md:px-3 md:py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link className="h-4 md:h-6" /><p className="md:mt-1 pl-1">Website</p></span></a>
+                      <a > <span className="inline-flex bg-gray-200 rounded-full p-2 md:px-3 md:py-1 text-xs font-semibold text-gray-700 md:mr-2 md:mb-2 hover:bg-gray-400"><MapPin className="h-4 md:h-6" /><p className="md:mt-1 pl-1">{business.place}</p></span></a>
                       {/* <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2"><MapPin />{business.place}</span>
                       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">{business.place}</span> */}
                     </div>
@@ -134,8 +134,8 @@ const Dashboard = () => {
 
                     </div>
                     <div className="px-6 pb-2">
-                    <a target="_blank" href={creator.link}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link /><p className="mt-1">Instagram</p></span></a>
-                    <a > <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><MapPin /><p className="mt-1">{creator.place}</p></span></a>
+                      <a target="_blank" href={creator.link}> <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><Link /><p className="mt-1">Instagram</p></span></a>
+                      <a > <span className="inline-flex bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400"><MapPin /><p className="mt-1">{creator.place}</p></span></a>
                     </div>
                   </div>
                 </div>
@@ -143,11 +143,11 @@ const Dashboard = () => {
           }
         </div>
       </div>
-      
+
       {
-        (userType==='creator')
-        ? <SeamlessFetchStartups />
-        : ''
+        (userType === 'creator')
+          ? <SeamlessFetchStartups />
+          : ''
       }
       <DashboardFeatures />
       <ToastContainer />
