@@ -135,7 +135,7 @@ export function Navbar() {
                           ?
                           <NavLink
                             to={path}
-                            onClick={window.scrollTo(0, 0)}
+                            onClick={toggleMenu}
                             className="text-sm font-semibold text-gray-800 hover:text-gray-900"
                           >
                             {title}
