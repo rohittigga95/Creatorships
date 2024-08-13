@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { Navbar } from '../Components/Navbar';
 
 export function AdminLogin() {
     const navigate = useNavigate()
@@ -58,6 +59,8 @@ export function AdminLogin() {
   
 
   return (
+    <>
+    <Navbar />
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-1">
         
@@ -123,7 +126,7 @@ export function AdminLogin() {
           </div>
         </div>
       </div>
-      <hr className="mt-6" />
     </section>
+    </>
   );
 }

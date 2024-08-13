@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import App from '../App';
 import Home from '../Pages/Home';
 import { ForCreatorPage } from '../Pages/ForCreatorPage';
@@ -8,6 +8,7 @@ import { Contact } from '../Pages/Contact';
 import { Admin } from '../Pages/Admin';
 import Dashboard  from '../Pages/Dashboard';
 import { AdminLogin } from '../Pages/AdminLogin';
+import { Navbar } from '../Components/Navbar';
 
 
 const router = createBrowserRouter([
@@ -28,8 +29,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <App />,
-    children: [{ path: '/login', element: <LoginSignupPage /> }],
+    element: <LoginSignupPage />,
+    
+    
   },
   {
     path: '/contact',
@@ -43,8 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <App />,
-    children: [{ path: '/admin', element: <AdminLogin /> }],
+    element: <AdminLogin />,
   },
   {
     path: '/dashboard',

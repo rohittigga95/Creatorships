@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Cookies from 'js-cookie';
+import { Navbar } from '../Components/Navbar';
 
 export function LoginSignupPage() {
   const navigate = useNavigate();
@@ -95,6 +96,9 @@ export function LoginSignupPage() {
 
 
     return (
+      <>
+      <Navbar />
+      
       <section>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="relative flex items-end px-4 pb-10 pt-60 sm:px-6 sm:pb-16 md:justify-center lg:px-8 lg:pb-24">
@@ -363,5 +367,6 @@ export function LoginSignupPage() {
         </div>
         <hr className="" />
       </section>
+      </>
     );
   }
